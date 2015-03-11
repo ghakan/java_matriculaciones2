@@ -1,41 +1,35 @@
-package com.zubiri.java_Matriculas;
+package com.zubiri.matriculas;
 
 import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
-		/*int opcion, opcion2;
-
+	public static void main(String[] args) throws Exception {
+		int opcion;
 		do{
 			Scanner sc = new Scanner(System.in);
 			
+			System.out.println("*************MENU**************");
+			System.out.println("1. Introducir Alumnos         *");
+			System.out.println("2. Buscar Persona             *");
+			System.out.println("3. Introducir Matricula       *");
+			System.out.println("4. Introducir Asignatura      *");
+			System.out.println("0. Salir                      *");
 			System.out.println("*******************************");
-			System.out.println("*Menu:                        *");
-			System.out.println("*******************************");
-			System.out.println("Introducir Persona------------1");
-			System.out.println("Buscar Persona----------------2");
-			System.out.println("Introducir Matricula----------3");
-			System.out.println("Introducir Asignatura---------4");
-			System.out.println("Salir-------------------------0");
-			System.out.println("*******************************");
-			
 			opcion = sc.nextInt();
-			
-			switch (opcion) {
+			switch (sc.nextInt()) {
 			case 1:
-				System.out.println("Cuantas personas: ");
-				opcion2 = sc.nextInt();
-				while (opcion2 != 0) {
-					Multiteca.addObra(sc);
-					opcion2--;
-				}
+				Personas.crearAlumnos(sc);
+				
 				break;
 			case 2:
-				Multiteca.buscarObraPatron(sc);
+				Persona.mostrarPersona(sc);
 				break;
 			case 3:
-				Multiteca.formattedMultiteca();
+				Matriculas.matriculas.add(new Matricula(sc));
+				break;
+			case 4:
+				Asignaturas.al_asignaturas.add(new Asignatura(sc));
 				break;
 			default:
 				if (opcion == 0) {
@@ -45,6 +39,6 @@ public class Main {
 				break;
 				}
 			}
-		}while(opcion != 0);*/
+		}while(opcion != 0);
 	}
 }

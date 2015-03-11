@@ -15,6 +15,7 @@ public class Matricula extends Asignatura {
 	}
 	//Constructor 2
 	public Matricula(Scanner sc){
+		super(sc);
 		System.out.println("Introduce el ano matriculacion: ");
 		this.setAnoMatriculacion(sc.nextInt());
 		System.out.println("Introduce el precio: ");
@@ -39,9 +40,9 @@ public class Matricula extends Asignatura {
 
 	//MAtricula formateado en un String
 	@Override
-	public String formattedAsignatura(){
+	public String formatted(){
 		String matricula =
-				super.formattedAsignatura()+ "\n" +
+				super.formatted()+ "\n" +
 				"Ano de matriculacion: \t" + this.getAnoMatriculacion()+ "\n" +
 				"Precio: \t" + this.getPrecio()+ "\n";
 		return matricula;
@@ -54,7 +55,7 @@ public class Matricula extends Asignatura {
 	 * @return
 	 */
 	public double descuentoFamiliaNumerosa(int porcentaje) {
-		int resultado = this.getPrecio() * porcentaje / 100;
+		Double resultado = this.getPrecio() * porcentaje / 100;
 
 		return resultado;
 	}

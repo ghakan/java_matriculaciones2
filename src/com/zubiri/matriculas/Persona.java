@@ -1,6 +1,5 @@
 package com.zubiri.matriculas;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Persona {
@@ -8,7 +7,7 @@ public abstract class Persona {
 	private String dni;
 	private String nombre;
 	private String apellido;
-	private static ArrayList<Persona> al_persona = new ArrayList<Persona>();
+	//static ArrayList<Persona> al_persona = new ArrayList<Persona>();
 
     //Constructor 1
 	public Persona(String dni, String nombre, String apellido){
@@ -27,52 +26,21 @@ public abstract class Persona {
 	}
 
 	//Metodo buscar 
-	public static void buscarPersona(Scanner sc) throws Exception{
+	public static void mostrarPersona(Scanner sc) throws Exception{
 		System.out.println("Que quieres buscar?: ");
 		System.out.println("--------------------------------");
 		System.out.println("Alumno-------------------------1");
 		System.out.println("Profesor-----------------------2");
 		int opcion = sc.nextInt();
-		String nombre;
 		switch (opcion) {
 		case 1:
-			Persona alumno = null;
-			System.out.println("Escribe el nombre del alumno: ");
-			nombre = sc.next();
-			alumno = obtainNombre(nombre);
-			System.out.println(alumno.formattedPersona());
-			System.out.println("---------FIN------------");
+			Personas.formattedAlumnos();
 			break;
 		case 2:
-			Persona profesor = null;
-			System.out.println("Escribe el nombre del profesor: ");
-			nombre = sc.next();
-			profesor = obtainNombre(nombre);
-			System.out.println(profesor.formattedPersona());
-			System.out.println("---------FIN------------");
+			Personas.formattedProfesores();
 		default:
 			throw new Exception("Error, tipo de opcion permitida 1 o 2");
 		}
-	}
-	//Metodo que busca por nombre y devuelve una persona del ArrayList al_persona 
-	public static Persona obtainNombre(String nombre){
-		Persona persona = null;
-		for (int i = 0; i < al_persona.size(); i++) {
-			if (al_persona.get(i).getNombre().equalsIgnoreCase(nombre)) {
-				persona = al_persona.get(i);
-			}
-		}
-		return persona;
-	}
-
-	public Persona(ArrayList<Persona> datos){
-		setPersona(datos);
-	}
-	public static ArrayList<Persona> getPersona() {
-		return al_persona;
-	}
-	public static void setPersona(ArrayList<Persona> datos) {
-		Persona.al_persona = datos;
 	}
 
 	public String getDni() {
@@ -113,15 +81,7 @@ public abstract class Persona {
 				"DNI: \t" + this.getDni()+"\n" +
 				"Nombre: \t" + this.getNombre()+ "\n" +
 				"Apellido: \t" + this.getApellido()+ "\n";
-				if (sc == 1){
-					persona+= getAnoInscripcion().alumno.formattedPersona() + "\n"
-					+ getCiclo().alumno.formattedPersona() + "\n";
-				}
-				if(sc == 2){
-					persona+= getTitulacion().profesor.formattedPersona() + "\n"
-					+ getDepartamento().profesor.formattedPersona() + "\n";
-				}
-
+				
 		return persona;
 	}
 
@@ -132,10 +92,8 @@ public abstract class Persona {
 	public void split(String personaStr, char separator) {
 		
 		String[] strArray = personaStr.split(separator+"");
-		this.setDni(Integer.parseInt(strArray[0]));
+		this.setDni((strArray[0]));
 		this.setNombre(strArray[1]);
 		this.setApellido(strArray[2]);
-		this.setPersona(new Alumno(strArray[2],";"));
-		this.setPersona(new Profesor(strArray[3],"#"));
 	}
 }

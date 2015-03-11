@@ -1,6 +1,5 @@
 package com.zubiri.matriculas;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Asignatura {
@@ -23,7 +22,7 @@ public class Asignatura {
 		System.out.println("Introduce los creditos: ");
 		this.setCreditos(sc.nextInt());
 		System.out.println("Introduce el profesor: ");
-		this.setProfesor(sc.next());
+		this.setProfesor(new Profesor(sc));
 	}
 	
 	public String getNombre() {
@@ -59,7 +58,7 @@ public class Asignatura {
 	 * @return String
 	 */
 	
-	public String formattedAsignatura() {
+	public String formatted() {
 		String asignatura =
 				"Nombre: \t" + this.getNombre()+"\n" +
 				"Creditos: \t" + this.getCreditos()+ "\n" +

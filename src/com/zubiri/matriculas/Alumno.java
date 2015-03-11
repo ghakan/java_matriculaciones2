@@ -61,5 +61,13 @@ public class Alumno extends Persona {
 				"Ano de Inscripcion: \t" + this.getAnoInscripcion()+ "\n";
 		return alumno;
 	}
+	public void buscarAlumno(Scanner sc)
+	{
+		Persona alumno = null;
+		System.out.println("Escribe el nombre del alumno: ");
+		alumno = obtainNombre(sc);
+		System.out.println(alumno.formattedPersona());
+		System.out.println("---------FIN------------");
+	}
 
 }

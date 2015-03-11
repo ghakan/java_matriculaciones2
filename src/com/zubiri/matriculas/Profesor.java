@@ -15,6 +15,7 @@ public class Profesor extends Persona {
 	}
 	//Constructor 2
 	public Profesor(Scanner sc){
+		super(sc);
 		System.out.println("Introduce la titulacion: ");
 		this.setDni(sc.next());
 		System.out.println("Introduce el departamento: ");
