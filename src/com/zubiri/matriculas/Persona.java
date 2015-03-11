@@ -24,28 +24,6 @@ public abstract class Persona {
 		this.setNombre(sc.next());
 		System.out.println("Introduce el apellido: ");
 		this.setApellido(sc.next());
-		int opcion;
-		try{
-			System.out.println("A donde lo quieres anadir?");
-			System.out.println("-------------------------------");
-			System.out.println("Alumno------------------------1");
-			System.out.println("Profesor----------------------2");
-			opcion = sc.nextInt();
-
-			switch (opcion<0) {
-			case 1:
-				al_persona.add(new Alumno(sc));
-				break;
-			case 2:
-				al_persona.add(new Profesor(sc));
-				break;
-			default:
-				break;
-			}
-		}catch(InputMismatchException e){
-			System.out.println("No ha insertado la opcion correcta");
-			sc.nextLine();
-		}	
 	}
 
 	//Metodo buscar 

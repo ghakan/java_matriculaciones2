@@ -18,6 +18,7 @@ public class Alumno extends Persona {
 	}
 	//Constructor 2
 	public Alumno(Scanner sc){
+		super(sc);
 		System.out.println("Introduce el ciclo: ");
 		this.setCiclo(sc.next());
 		System.out.println("Introduce el ano de inscripcion: ");
