@@ -15,6 +15,7 @@ public class Alumno extends Persona {
 		super(dni, nombre, apellido);
 		this.ciclo = ciclo;
 		this.anoInscripcion = anoInscripcion;
+		Personas.personas.add(this);
 	}
 	//Constructor 2
 	public Alumno(Scanner sc){
@@ -23,6 +24,7 @@ public class Alumno extends Persona {
 		this.setCiclo(sc.next());
 		System.out.println("Introduce el ano de inscripcion: ");
 		this.setAnoInscripcion(sc.nextInt());
+		Personas.personas.add(this);
 	}
 	
 	//Matriculas realizadas a lo largo de los anos en las distintas asignaturas
@@ -61,13 +63,6 @@ public class Alumno extends Persona {
 				"Ano de Inscripcion: \t" + this.getAnoInscripcion()+ "\n";
 		return alumno;
 	}
-	public void buscarAlumno(Scanner sc)
-	{
-		Persona alumno = null;
-		System.out.println("Escribe el nombre del alumno: ");
-		alumno = obtainNombre(sc);
-		System.out.println(alumno.formattedPersona());
-		System.out.println("---------FIN------------");
-	}
+	
 
 }

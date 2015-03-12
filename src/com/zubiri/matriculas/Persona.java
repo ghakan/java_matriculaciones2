@@ -27,17 +27,17 @@ public abstract class Persona {
 
 	//Metodo buscar 
 	public static void mostrarPersona(Scanner sc) throws Exception{
-		System.out.println("Que quieres buscar?: ");
+		System.out.println("Que quieres mostrar?: ");
 		System.out.println("--------------------------------");
 		System.out.println("Alumno-------------------------1");
 		System.out.println("Profesor-----------------------2");
 		int opcion = sc.nextInt();
 		switch (opcion) {
 		case 1:
-			Personas.formattedAlumnos();
+			Personas.buscarAlumno(sc);
 			break;
 		case 2:
-			Personas.formattedProfesores();
+			Personas.buscarProfesor(sc);
 		default:
 			throw new Exception("Error, tipo de opcion permitida 1 o 2");
 		}

@@ -5,60 +5,81 @@ import java.util.Scanner;
 
 public class Personas {
 	
-	//2x ArrayList de Persona para guardar lista de alumnos y profesores
 	public static ArrayList<Persona> personas = new ArrayList<Persona>();
-	//public static ArrayList<Persona> profesores = new ArrayList<Persona>();
-	//public static ArrayList<Persona> alumnos = new ArrayList<Persona>();
+	
 	/*
 	* Alumnos
 	*/
 	//Método para crear alumnos
 	public static void crearAlumnos(Scanner sc){
-	System.out.println("Cuantos alumnos quieres crear: ");
-	for (int i = 0; i < sc.nextInt(); i++){
-	new Alumno(sc);
-	}
+		System.out.println("Cuantos alumnos quieres crear: ");
+		int cantidad = sc.nextInt();
+		for (int i = 0; i < cantidad; i++){
+			new Alumno(sc);
+		}
 	}
 	
 	//Método para mostrar Alumnos
 	public static String formattedAlumnos(){
-	String alumnosFormateados = "";
-	for (int a = 0; a < personas.size(); a++) {
-		if(personas.get(a).getClass().getName()=="Alumno.java"){
-			alumnosFormateados += personas.get(a).formatted();
+		String alumnosFormateados = "";
+		for (int a = 0; a < personas.size(); a++) {
+			if(personas.get(a).getClass().getName()=="com.zubiri.matriculas.Alumno"){
+				alumnosFormateados += personas.get(a).formattedPersona();
 			}
+		}
+		return alumnosFormateados;
 	}
-	return alumnosFormateados;
+	
+	//Método para devolver profesores formateados
+	public static String formattedProfesores(){
+	String profesoresFormateados = "";
+	for (int a = 0; a < personas.size(); a++) {
+		if (personas.get(a).getClass().getName() == "com.zubiri.matriculas.Profesor"){
+			profesoresFormateados += personas.get(a).formattedPersona();
+		}
+	}
+	return profesoresFormateados;
 	}
 	/*
 	* Profesores
 	*/
-	//Método para crear profesores
-	public static void crearProfesores(Scanner sc){
-	System.out.println("Cuantos alumnos quieres crear: ");
-	for (int e = 0; e < sc.nextInt(); e++){
-	new Profesor(sc);
+	
+	
+	public static void buscarAlumno(Scanner sc)
+	{
+		Alumno alumno = null;
+		System.out.print(personas.get(0).getClass().getName());
+		System.out.println("Escribe el nombre del alumno: ");
+		try{
+			for (int a = 0; a < personas.size(); a++) {
+		
+				if(personas.get(a).getClass().getName()=="com.zubiri.matriculas.Alumno"){
+					if(personas.get(a).getNombre().equalsIgnoreCase(sc.next())){
+						alumno = (Alumno)personas.get(a);
+					}
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.print("ERROR: " + e);
+		}
+		System.out.println(alumno.formattedPersona());
+		System.out.println("---------FIN------------");
 	}
-	}
-	//Método para devolver profesores formateados
-	public static String formattedProfesores(){
-	String profesoresFormateados = "";
-	for (int a = 0; a < alumnos.size(); a++) {
-	profesoresFormateados += alumnos.get(a).formatted();
-	}
-	return profesoresFormateados;
-	}
-	//Getters y setters
-	public static ArrayList<Persona> getAlumnos() {
-	return alumnos;
-	}
-	public static void setAlumnos(ArrayList<Persona> alumnos) {
-	Personas.alumnos = alumnos;
-	}
-	public static ArrayList<Persona> getProfesores() {
-	return profesores;
-	}
-	public static void setProfesores(ArrayList<Persona> profesores) {
-	Personas.profesores = profesores;
+	
+	public static void buscarProfesor(Scanner sc)
+	{
+		Profesor profesor = null;
+		System.out.println("Escribe el nombre del profesor: ");
+		for (int a = 0; a < personas.size(); a++) {
+			if(personas.get(a).getClass().getName()=="com.zubiri.matriculas.Profesor"){
+				if(personas.get(a).getNombre().equalsIgnoreCase(sc.next())){
+					profesor = (Profesor)personas.get(a);
+				}
+			}
+		}
+		System.out.println(profesor.formattedPersona());
+		System.out.println("---------FIN------------");
 	}
 }

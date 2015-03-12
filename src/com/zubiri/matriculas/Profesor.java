@@ -12,6 +12,7 @@ public class Profesor extends Persona {
 		super(dni, nombre, apellido);
 		this.titulacion = titulacion;
 		this.departamento = departamento;
+		Personas.personas.add(this);
 	}
 	//Constructor 2
 	public Profesor(Scanner sc){
@@ -20,6 +21,7 @@ public class Profesor extends Persona {
 		this.setDni(sc.next());
 		System.out.println("Introduce el departamento: ");
 		this.setNombre(sc.next());
+		Personas.personas.add(this);
 	}
 
 	public String getTitulacion() {
