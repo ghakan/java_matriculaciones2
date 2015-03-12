@@ -22,6 +22,10 @@ public class Asignatura {
 		System.out.println("Introduce los creditos: ");
 		this.setCreditos(sc.nextInt());
 		System.out.println("Introduce el profesor: ");
+		if  (Personas.buscarProfesor(sc.next()) == null)
+			this.setProfesor(new Profesor(sc));
+			//sino asigna la informacion del profesor ya existente
+			else this.setProfesor(Personas.buscarProfesor(sc.next()));
 		this.setProfesor(new Profesor(sc));
 	}
 	

@@ -82,4 +82,18 @@ public class Personas {
 		System.out.println(profesor.formattedPersona());
 		System.out.println("---------FIN------------");
 	}
+	public static Profesor buscarProfesor(String nombre)
+	{
+		Profesor profesor = null;
+		System.out.println("Escribe el nombre del profesor: ");
+		for (int a = 0; a < personas.size(); a++) {
+			if(personas.get(a).getClass().getName()=="com.zubiri.matriculas.Profesor"){
+				if(personas.get(a).getNombre().equalsIgnoreCase(nombre)){
+					profesor = (Profesor)personas.get(a);
+				}
+			}
+		}
+		return profesor;
+	}
+	
 }
